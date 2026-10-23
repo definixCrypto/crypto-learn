@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+    <link rel="stylesheet" href="css/style.css">
+	
+</head>
+<body>
+
+    <header>
+        <h1>My Website</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+		<div id = "search">
+			<input type = "text" id="tokenAddress" placeholder = "Enter token mint address"/>
+			<button id = "searchButton">
+				Search
+			</button>
+		</div>
+        <div id = "result">
+			<p id="tokenName"></p>
+			<p id="tokenSymbol"></p>
+			<p id="tokenPrice"></p>
+			<p id="tokenFdv"></p>
+			<img id="tokenImage" src=""/>
+		</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Website</p>
+    </footer>
+
+    <script>
+	async function getTokenData(address){
+		const response = await fetch(
+			`https://api.dexscreener.com/latest/dex/tokens/${address}`
+
+		);
+		const data = await response.json();
+		console.log(data);
+		const pair = data.pairs[0];
+		document.getElementById("result").innerHTML = `
+			<h2>${pair.baseToken.name}</h2>
+			<p>Symbol: ${pair.baseToken.symbol}</p>
+			<p>Price: $${pair.priceUsd}</p>
+			<p>FDV: $${pair.fdv}</p>
+			<img src="${pair.info?.imageUrl}" alt = "Token Image"/>
+		`;
+		}
+		
+	const button = document.getElementById("searchButton");
+	button.addEventListener("click", searchToken);
+	
+	function searchToken() {
+
+		const address = document.getElementById("tokenAddress").value;
+		getTokenData(address);
+		console.log(address);
+	}
+	</script>
+</body>
+</html>
