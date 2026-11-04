@@ -1,0 +1,52 @@
+*{
+	background-color: #202020;
+	color:#a0a0a0;
+}
+#search{
+	margin: auto;
+	width:80%;
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#searchModule{
+	background-color:#202020;
+	width: 60%;
+	padding: 5px;
+	border-radius:50px;
+	border: 1px solid #a0a0a0;
+}
+#tokenAddress{
+	width:88%;
+	background-color:#202020;
+	height: 2vh;
+	border-radius: 50px;
+	text-align: center;
+	color:#f0f0f0;
+	border: 0px;
+}
+#searchButton{
+	width:10%;
+	background-color:#606060;
+	height: 2vh;
+	border-radius: 50px;
+	border: 0px;
+	align:right;
+}
+#result{
+	background-color: red;
+	width: 80%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+#result > *{
+	height: 20vh;
+}
+#tokenImage{
+	border-radius:50%;
+	border: 8px solid white;
+}
